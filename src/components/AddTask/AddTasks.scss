@@ -1,0 +1,22 @@
+.addTaskButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+}
+
+// TODO: Choose colour for radius
+
+.addTaskButtonBorder {
+  border-radius: 25px;
+  border: 2px solid #73ad21;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
+
+// TODO: Choose colour for interior, add transition effect
+
+.addTaskButton:hover {
+  background-color: #73ad21;
+}

@@ -1,7 +1,7 @@
 # TODO:
 
 - Bootstrap vite+react project ✅
-- Create a button component to add a new task
+- Create a button component to add a new task ✅
 - Create a task component
 
   - Following fields in text on component:
