@@ -1,6 +1,6 @@
 # TODO:
 
-- Bootstrap vite+react project
+- Bootstrap vite+react project ✅
 - Create a button component to add a new task
 - Create a task component
 
