@@ -5,7 +5,7 @@ import Column from "./components/Column/Column";
 import "./App.css";
 import Task from "./components/Task/Task";
 
-let columnsRender = (
+let columnsRenderDefault = (
   <>
     <Column state="porHacer">
       <Task
@@ -26,24 +26,58 @@ function App() {
 
   useEffect(() => {
     tasks = JSON.parse(localStorage.getItem("taskCreated"));
+    console.log(tasks);
     if (tasks == null) {
-      setcolumns(columnsRender);
+      setcolumns(columnsRenderDefault);
     } else {
-      setcolumns("ok so here i call a variable that is the rendered columns");
+      let renderedColumns = renderColumns(tasks);
+      setcolumns(renderedColumns);
+      console.log(renderedColumns); // Use renderedColumns instead of columns
     }
   }, [tasks]);
 
-  // const asignTasksToColumns = tasks => {
-  //   columnsRender = <>test</>;
-
-  //   tasks?.map(element => {
-  //     console.log(element.status);
-  //     if (element.status === "porHacer") {
-  //       return <>test</>;
-  //     }
-  //   });
-  //   console.log("and heres the array!!!");
-  // };
+  const renderColumns = tasks => {
+    return (
+      <>
+        <Column state="porHacer">
+          {tasks
+            .filter(element => element.status === "porHacer")
+            .map(task => (
+              <Task
+                key={task.id}
+                title={task.title}
+                notes={task.notes}
+                status={task.status}
+              ></Task>
+            ))}
+        </Column>
+        <Column state="enCurso">
+          {tasks
+            .filter(element => element.status === "enCurso")
+            .map(task => (
+              <Task
+                key={task.id}
+                title={task.title}
+                notes={task.notes}
+                status={task.status}
+              ></Task>
+            ))}
+        </Column>
+        <Column state="finalizada">
+          {tasks
+            .filter(element => element.status === "finalizada")
+            .map(task => (
+              <Task
+                key={task.id}
+                title={task.title}
+                notes={task.notes}
+                status={task.status}
+              ></Task>
+            ))}
+        </Column>
+      </>
+    );
+  };
 
   return (
     <>
