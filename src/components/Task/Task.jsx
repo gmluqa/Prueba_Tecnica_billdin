@@ -1,9 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { placeTasks } from "../../store/slices/tasksSlice";
 import { useState } from "react";
 import "./Task.scss";
 
 function Task(props) {
+  let tasks = useSelector(state => state.tasks);
+
+  // let subtasksArr = [];
+
+  // useEffect(() => {
+  //   array.forEach(element => {
+
+  //   });
+  //   .push()
+  // }, [tasks]);
+
   const dispatch = useDispatch();
   const [subtask, setSubtask] = useState("");
 
@@ -41,6 +52,7 @@ function Task(props) {
           +
         </div>
       </div>
+      {/* this should pull from reduxstate */}
       {props?.subtasks?.map((element, key) => (
         <div className="subTasksChecklist">
           <li key={key}>{element}</li>
