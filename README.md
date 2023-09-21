@@ -4,9 +4,9 @@
 - Create a button component to add a new task ✅
 - Create a column component, then place three columns ✅
 
-  - "Por hacer" (amarillo, atención)
-  - "En curso" (verde, avance)
-  - "Finalizada" (azul claro, éxito y cumplimiento)
+  - "Por hacer" (amarillo, atención) ✅
+  - "En curso" (verde, avance) ✅
+  - "Finalizada" (azul claro, éxito y cumplimiento) ✅
 
 - Create a task component
 
