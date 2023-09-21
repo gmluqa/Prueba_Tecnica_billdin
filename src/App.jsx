@@ -7,13 +7,7 @@ import Task from "./components/Task/Task";
 
 let columnsRenderDefault = (
   <>
-    <Column state="porHacer">
-      <Task
-        title="example"
-        notes="example notes"
-        subtasks={["subtask1", "subtask2"]}
-      ></Task>
-    </Column>
+    <Column state="porHacer"></Column>
     <Column state="enCurso"></Column>
     <Column state="finalizada"></Column>
   </>
@@ -34,6 +28,7 @@ function App() {
       setcolumns(renderedColumns);
       console.log(renderedColumns); // Use renderedColumns instead of columns
     }
+    console.log(tasks);
   }, [tasks]);
 
   const renderColumns = tasks => {
@@ -45,6 +40,7 @@ function App() {
             .map(task => (
               <Task
                 key={task.id}
+                id={task.id}
                 title={task.title}
                 notes={task.notes}
                 status={task.status}
@@ -81,13 +77,6 @@ function App() {
 
   return (
     <>
-      {/* TODO: Remove this once ready */}
-      <Task
-        title="example task"
-        notes="example notes"
-        status="porHacer"
-        subtasks={["example", "example2"]}
-      ></Task>
       <div className="addTaskHandler">
         <AddTask />
       </div>

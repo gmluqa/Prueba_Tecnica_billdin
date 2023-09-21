@@ -1,7 +1,10 @@
+import { useDispatch } from "react-redux";
+import { placeTasks } from "../../store/slices/tasksSlice";
 import { useState } from "react";
 import "./Task.scss";
 
 function Task(props) {
+  const dispatch = useDispatch();
   const [subtask, setSubtask] = useState("");
 
   const onChange = e => {
@@ -9,15 +12,27 @@ function Task(props) {
   };
 
   const createSubtask = id => {
-    console.log("here is the id " + id);
-    // console.log("here is the id " + id);
-    // console.log(JSON.parse(localStorage.getItem("taskCreated"))[id]);
+    // id - 1 is the index of the task in the array because we + 1 it on creation
+    console.log(JSON.parse(localStorage.getItem("taskCreated"))[id - 1]);
+    const taskCreated = JSON.parse(localStorage.getItem("taskCreated"));
+    taskCreated[id - 1].subtasks.push(subtask);
+    dispatch(placeTasks(taskCreated));
+    localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
   };
 
   return (
     <div className="taskBorder">
-      <div>Título: {props.title}</div>
-      <div>Notas: {props.notes}</div>
+      <div className="flexContainer">
+        <div>Título: {props.title}</div>
+        <input type="text" />
+        <div>✅</div>
+      </div>
+      <div className="flexContainer">
+        <div>Notas: {props.notes}</div>
+        <input type="text" />
+        <div>✅</div>
+      </div>
+
       {/* TODO Fix react dev tools warning here */}
       <div>Subtareas:</div>
       <div className="addSubtaskBorder">
@@ -33,10 +48,10 @@ function Task(props) {
         </div>
       ))}
       <label htmlFor="status">Estado:</label>
-      <select name="status" id="status">
+      <select name="status" id="status" defaultValue={props.status}>
         <option value="porHacer">Por hacer</option>
         <option value="enProgreso">En progreso</option>
-        <option value="finalizado">Finalizado</option>
+        <option value="finalizada">Finalizada</option>
       </select>
     </div>
   );

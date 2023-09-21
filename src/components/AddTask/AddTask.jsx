@@ -14,6 +14,7 @@ function AddTask() {
       id: taskCreated.length + 1,
       title: "",
       notes: "",
+      subtasks: [],
       status: "porHacer",
     };
     taskCreated.push(newTask);
