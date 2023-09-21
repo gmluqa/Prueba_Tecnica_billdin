@@ -8,29 +8,36 @@ function Task(props) {
     setSubtask(e.target.value);
   };
 
-  const onClick = () => {};
+  const createSubtask = id => {
+    console.log("here is the id " + id);
+    // console.log("here is the id " + id);
+    // console.log(JSON.parse(localStorage.getItem("taskCreated"))[id]);
+  };
 
   return (
     <div className="taskBorder">
       <div>Título: {props.title}</div>
       <div>Notas: {props.notes}</div>
-      <div>Estado: {props.status}</div>
       {/* TODO Fix react dev tools warning here */}
-      <div>
-        Subtareas:
-        {props.subtasks.map((element, key) => (
-          <div className="subTasksChecklist">
-            <li key={key}>{element}</li>
-            <input type="checkbox" />
-          </div>
-        ))}
-      </div>
+      <div>Subtareas:</div>
       <div className="addSubtaskBorder">
         <input type="text" onChange={onChange} />
-        <div className="addSubtask" onClick={onClick}>
+        <div className="addSubtask" onClick={() => createSubtask(props.id)}>
           +
         </div>
       </div>
+      {props?.subtasks?.map((element, key) => (
+        <div className="subTasksChecklist">
+          <li key={key}>{element}</li>
+          <input type="checkbox" />
+        </div>
+      ))}
+      <label htmlFor="status">Estado:</label>
+      <select name="status" id="status">
+        <option value="porHacer">Por hacer</option>
+        <option value="enProgreso">En progreso</option>
+        <option value="finalizado">Finalizado</option>
+      </select>
     </div>
   );
 }

@@ -7,28 +7,30 @@ import Task from "./components/Task/Task";
 
 function App() {
   let tasks = useSelector(state => state.tasks);
-  console.log(tasks);
   useEffect(() => {
     try {
       tasks = JSON.parse(localStorage.getItem("taskCreated"));
-      console.log(tasks);
-      console.log("column asign time...");
       asignTasksToColumns(tasks);
     } catch (error) {}
   }, [tasks]);
 
   let columnsRender = (
     <>
-      <Column state="porHacer"></Column>
+      <Column state="porHacer">
+        <Task></Task>
+      </Column>
       <Column state="enCurso"></Column>
       <Column state="finalizada"></Column>
     </>
   );
 
+  // first grab the array
+
   const asignTasksToColumns = tasks => {
-    return tasks.map((task, index) => {
-      <div key={index}>{task}</div>;
-    });
+    // array.forEach(element => {});
+    // return tasks.map((task, index) => {
+    //   <div key={index}>{task}</div>;
+    // });
   };
 
   return (
