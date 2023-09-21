@@ -6,6 +6,13 @@ import Task from "./components/Task/Task";
 function App() {
   return (
     <>
+      {/* TODO: Remove this once ready */}
+      <Task
+        title="example task"
+        notes="example notes"
+        status="porHacer"
+        subtasks={["example", "example2"]}
+      ></Task>
       <div className="addTaskHandler">
         <AddTask />
       </div>
@@ -14,12 +21,6 @@ function App() {
         <Column state="enCurso"></Column>
         <Column state="finalizada"></Column>
       </div>
-      <Task
-        title="example task"
-        notes="example notes"
-        status="porHacer"
-        subtasks={["example", "example2"]}
-      ></Task>
     </>
   );
 }
