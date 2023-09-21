@@ -28,6 +28,8 @@ function App() {
     tasks = JSON.parse(localStorage.getItem("taskCreated"));
     if (tasks == null) {
       setcolumns(columnsRender);
+    } else {
+      setcolumns("ok so here i call a variable that is the rendered columns");
     }
   }, [tasks]);
 
