@@ -1,37 +1,47 @@
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask/AddTask";
 import Column from "./components/Column/Column";
 import "./App.css";
 import Task from "./components/Task/Task";
 
+let columnsRender = (
+  <>
+    <Column state="porHacer">
+      <Task
+        title="example"
+        notes="example notes"
+        subtasks={["subtask1", "subtask2"]}
+      ></Task>
+    </Column>
+    <Column state="enCurso"></Column>
+    <Column state="finalizada"></Column>
+  </>
+);
+
 function App() {
+  const [columns, setcolumns] = useState(null);
+
   let tasks = useSelector(state => state.tasks);
+
   useEffect(() => {
-    try {
-      tasks = JSON.parse(localStorage.getItem("taskCreated"));
-      asignTasksToColumns(tasks);
-    } catch (error) {}
+    tasks = JSON.parse(localStorage.getItem("taskCreated"));
+    if (tasks == null) {
+      setcolumns(columnsRender);
+    }
   }, [tasks]);
 
-  let columnsRender = (
-    <>
-      <Column state="porHacer">
-        <Task></Task>
-      </Column>
-      <Column state="enCurso"></Column>
-      <Column state="finalizada"></Column>
-    </>
-  );
+  // const asignTasksToColumns = tasks => {
+  //   columnsRender = <>test</>;
 
-  // first grab the array
-
-  const asignTasksToColumns = tasks => {
-    // array.forEach(element => {});
-    // return tasks.map((task, index) => {
-    //   <div key={index}>{task}</div>;
-    // });
-  };
+  //   tasks?.map(element => {
+  //     console.log(element.status);
+  //     if (element.status === "porHacer") {
+  //       return <>test</>;
+  //     }
+  //   });
+  //   console.log("and heres the array!!!");
+  // };
 
   return (
     <>
@@ -46,7 +56,7 @@ function App() {
         <AddTask />
       </div>
 
-      <div className="columnHandler">{columnsRender}</div>
+      <div className="columnHandler">{columns}</div>
     </>
   );
 }
