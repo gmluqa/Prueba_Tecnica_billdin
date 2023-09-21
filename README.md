@@ -2,6 +2,12 @@
 
 - Bootstrap vite+react project ✅
 - Create a button component to add a new task ✅
+- Create a column component, then place three columns ✅
+
+  - "Por hacer" (amarillo, atención)
+  - "En curso" (verde, avance)
+  - "Finalizada" (azul claro, éxito y cumplimiento)
+
 - Create a task component
 
   - Following fields in text on component:
@@ -15,11 +21,5 @@
 
   - All fields can be edited
   - Tasks can be deleted
-
-- Create a column component, make three of the columns
-
-  - "Por hacer" (amarillo, atención)
-  - "En curso" (verde, avance)
-  - "Finalizada" (azul claro, éxito y cumplimiento)
 
 - App needs pleasurable to use 😌

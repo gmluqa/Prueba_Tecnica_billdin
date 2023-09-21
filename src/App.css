@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.columnHandler {
+  display: flex;
+}
+
+.addTaskHandler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
