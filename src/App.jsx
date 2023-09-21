@@ -1,6 +1,7 @@
 import AddTask from "./components/AddTask/AddTask";
 import Column from "./components/Column/Column";
 import "./App.css";
+import Task from "./components/Task/Task";
 
 function App() {
   return (
@@ -13,6 +14,12 @@ function App() {
         <Column state="enCurso"></Column>
         <Column state="finalizada"></Column>
       </div>
+      <Task
+        title="example task"
+        notes="example notes"
+        status="porHacer"
+        subtasks={["example", "example2"]}
+      ></Task>
     </>
   );
 }
