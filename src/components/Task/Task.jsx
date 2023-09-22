@@ -31,6 +31,23 @@ function Task(props) {
     setCurrentTaskIndex(id - 1);
   };
 
+  const switchTaskToEnCurso = id => {
+    console.log("is the same as SHIEET?");
+    console.log(tasks);
+    const arrayIndex = id - 1;
+    const taskCreated = JSON.parse(localStorage.getItem("taskCreated"));
+    console.log("here is the localStorage ");
+    console.log(taskCreated);
+    console.log("heres the status");
+    console.log(taskCreated[arrayIndex].status);
+    taskCreated[arrayIndex].status = "enCurso";
+    console.log("it changed to enCurso?");
+    console.log(taskCreated[arrayIndex].status);
+    localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
+    dispatch(placeTasks(taskCreated));
+    console.log(tasks);
+  };
+
   return (
     <div className="taskBorder">
       <div className="flexContainer">
@@ -53,10 +70,13 @@ function Task(props) {
         </div>
       </div>
       <div>
-        {props.subtasks.map(subtask => (
-          <li>
+        {props.subtasks.map((subtask, key) => (
+          <li key={key}>
             {subtask}
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onClick={() => switchTaskToEnCurso(props.id)}
+            />
           </li>
         ))}
       </div>
