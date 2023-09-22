@@ -15,7 +15,7 @@
     - Título ✅
     - Notas ✅
     - Estado ✅
-    - Subtareas (press a + button in the task and it will create a bullet point-like list)
+    - Subtareas (press a + button in the task and it will create a bullet point-like list) ✅
       - If a subtarea is "en curso", the master task will be "en curso".
       - If all the subtareas are "finalizadas", the master task will be finished
 
