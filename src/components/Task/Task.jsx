@@ -43,7 +43,7 @@ function Task(props) {
     taskCreated[arrayIndex].status = "enCurso";
     console.log("it changed to enCurso?");
     console.log(taskCreated[arrayIndex].status);
-    localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
+    // localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
     // dispatch(placeTasks(taskCreated)); commented for now, TOOD: Fix
   };
 
