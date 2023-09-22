@@ -20,15 +20,12 @@ function App() {
 
   useEffect(() => {
     tasks = JSON.parse(localStorage.getItem("taskCreated"));
-    console.log(tasks);
     if (tasks == null) {
       setcolumns(columnsRenderDefault);
     } else {
       let renderedColumns = renderColumns(tasks);
       setcolumns(renderedColumns);
-      console.log(renderedColumns); // Use renderedColumns instead of columns
     }
-    console.log(tasks);
   }, [tasks]);
 
   const renderColumns = tasks => {

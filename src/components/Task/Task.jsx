@@ -12,8 +12,6 @@ function Task(props) {
 
   useEffect(() => {
     tasks = JSON.parse(localStorage.getItem("taskCreated"));
-    console.log("here are the tasks from subtask section");
-    console.log(tasks[currentTaskIndex].subtasks);
     // call to render
   }, [tasks]);
 
@@ -23,7 +21,6 @@ function Task(props) {
 
   const createSubtask = id => {
     // id - 1 is the index of the task in the array because we + 1 it on creation
-    console.log(JSON.parse(localStorage.getItem("taskCreated"))[id - 1]);
     const taskCreated = JSON.parse(localStorage.getItem("taskCreated"));
     taskCreated[id - 1].subtasks.push(subtask);
     dispatch(placeTasks(taskCreated));
@@ -32,17 +29,9 @@ function Task(props) {
   };
 
   const switchTaskToEnCurso = id => {
-    console.log("is the same as SHIEET?");
-    console.log(tasks);
     const arrayIndex = id - 1;
     const taskCreated = JSON.parse(localStorage.getItem("taskCreated"));
-    console.log("here is the localStorage ");
-    console.log(taskCreated);
-    console.log("heres the status");
-    console.log(taskCreated[arrayIndex].status);
     taskCreated[arrayIndex].status = "enCurso";
-    console.log("it changed to enCurso?");
-    console.log(taskCreated[arrayIndex].status);
     // localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
     // dispatch(placeTasks(taskCreated)); commented for now, TOOD: Fix
   };
