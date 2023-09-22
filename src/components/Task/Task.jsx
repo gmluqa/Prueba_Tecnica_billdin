@@ -46,6 +46,7 @@ function Task(props) {
     localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
     dispatch(placeTasks(taskCreated));
     console.log(tasks);
+    console.log("dummy commit");
   };
 
   return (
