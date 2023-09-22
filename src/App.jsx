@@ -44,6 +44,7 @@ function App() {
                 title={task.title}
                 notes={task.notes}
                 status={task.status}
+                subtasks={task.subtasks}
               ></Task>
             ))}
         </Column>

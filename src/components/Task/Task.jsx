@@ -1,22 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import { placeTasks } from "../../store/slices/tasksSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Task.scss";
 
 function Task(props) {
-  let tasks = useSelector(state => state.tasks);
-
-  // let subtasksArr = [];
-
-  // useEffect(() => {
-  //   array.forEach(element => {
-
-  //   });
-  //   .push()
-  // }, [tasks]);
-
   const dispatch = useDispatch();
   const [subtask, setSubtask] = useState("");
+  const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
+
+  let tasks = useSelector(state => state.tasks);
+
+  useEffect(() => {
+    tasks = JSON.parse(localStorage.getItem("taskCreated"));
+    console.log("here are the tasks from subtask section");
+    console.log(tasks[currentTaskIndex].subtasks);
+    // call to render
+  }, [tasks]);
 
   const onChange = e => {
     setSubtask(e.target.value);
@@ -29,6 +28,7 @@ function Task(props) {
     taskCreated[id - 1].subtasks.push(subtask);
     dispatch(placeTasks(taskCreated));
     localStorage.setItem("taskCreated", JSON.stringify(taskCreated));
+    setCurrentTaskIndex(id - 1);
   };
 
   return (
@@ -52,13 +52,15 @@ function Task(props) {
           +
         </div>
       </div>
-      {/* this should pull from reduxstate */}
-      {props?.subtasks?.map((element, key) => (
-        <div className="subTasksChecklist">
-          <li key={key}>{element}</li>
-          <input type="checkbox" />
-        </div>
-      ))}
+      <div>
+        {props.subtasks.map(subtask => (
+          <li>
+            {subtask}
+            <input type="checkbox" />
+          </li>
+        ))}
+      </div>
+      {/* {Subtasks handler} */}
       <label htmlFor="status">Estado:</label>
       <select name="status" id="status" defaultValue={props.status}>
         <option value="porHacer">Por hacer</option>
